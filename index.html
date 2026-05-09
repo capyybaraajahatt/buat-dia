@@ -3,107 +3,133 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday Sayang!</title>
+    <title>Special for You</title>
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #ffeef2;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+        body, html {
+            margin: 0; padding: 0;
+            height: 100%; font-family: 'Arial', sans-serif;
+            background-color: #111; color: white;
             overflow: hidden;
+        }
+
+        /* Layar Password */
+        #pass-screen {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: #000; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; z-index: 999;
+        }
+
+        input {
+            padding: 12px; border-radius: 8px; border: none;
+            margin-top: 15px; text-align: center; font-size: 16px;
+        }
+
+        button {
+            margin-top: 15px; padding: 10px 25px; border-radius: 20px;
+            border: none; background: #e21d24; color: white;
+            font-weight: bold; cursor: pointer;
+        }
+
+        /* Konten Utama */
+        #main-content {
+            display: none; height: 100%; width: 100%;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJndXp4bmZqbmZqbmZqbmZqbmZqbmZqbmZqbmZqbmZqbmZq/l41lTjJp6zH6H6Y6S/giphy.gif'); /* Animasi Background */
+            background-size: cover; background-position: center;
+            flex-direction: column; justify-content: center; align-items: center;
             text-align: center;
         }
 
-        .container {
-            background: white;
-            padding: 2rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            max-width: 400px;
-            z-index: 10;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeIn 2s forwards ease-in-out;
+        .floating-nailong {
+            position: absolute; width: 150px; z-index: -1;
+            animation: float 6s infinite ease-in-out;
         }
 
-        h1 { color: #d63384; margin-bottom: 10px; }
-        p { color: #555; line-height: 1.6; }
-
-        .btn-buka {
-            background-color: #d63384;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 50px;
-            cursor: pointer;
-            font-weight: bold;
-            margin-top: 20px;
-            transition: 0.3s;
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(50px, -100px) rotate(15deg); }
         }
 
-        .btn-buka:hover { transform: scale(1.1); background-color: #b02a6b; }
-
-        /* Animasi Hati Berjatuhan */
-        .heart {
-            position: absolute;
-            color: #ff4d6d;
-            font-size: 20px;
-            top: -10%;
-            animation: fall linear infinite;
+        .photo-gallery img {
+            width: 120px; height: 120px; object-fit: cover;
+            border: 3px solid white; border-radius: 15px;
+            margin: 10px; animation: bounce 2s infinite;
         }
 
-        @keyframes fall {
-            to { transform: translateY(110vh); }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
 
-        @keyframes fadeIn {
-            to { opacity: 1; transform: translateY(0); }
-        }
+        h1 { font-size: 2.5rem; text-shadow: 2px 2px #e21d24; }
+        p { padding: 0 20px; font-style: italic; }
     </style>
 </head>
 <body>
 
-    <div class="container" id="card">
-        <h1 id="headline">Klik Tombol di Bawah ❤️</h1>
-        <p id="pesan">Ada pesan kecil buat kamu yang hari ini lagi ulang tahun...</p>
-        <button class="btn-buka" onclick="mulaiKejutan()">Buka Pesan</button>
+    <!-- Layar Password -->
+    <div id="pass-screen">
+        <h2>Masukkan Tanggal Lahir (DDMMYYYY)</h2>
+        <p style="font-size: 0.8rem; color: #666;">Contoh: 28052007</p>
+        <input type="password" id="inputPass" placeholder="Klik di sini...">
+        <button onclick="checkPass()">Buka Kejutan</button>
     </div>
 
-    <!-- Audio (Opsional: ganti link mp3 dengan lagu romantis favorit kalian) -->
+    <!-- Konten Utama -->
+    <div id="main-content">
+        <!-- Tambahkan Gambar Nailong Lucu dari Internet -->
+        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNXN3bmZndmYyeXBoYmtvbmZ0bmZqbmZqbmZqbmZqbmZqbmZq/3o7TKVUn7iM8FMEU24/giphy.gif" class="floating-nailong" style="top: 10%; left: 10%;">
+        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNXN3bmZndmYyeXBoYmtvbmZ0bmZqbmZqbmZqbmZqbmZqbmZq/3o7TKVUn7iM8FMEU24/giphy.gif" class="floating-nailong" style="bottom: 10%; right: 10%;">
+
+        <h1>Happy Birthday! ❤️</h1>
+        
+        <div class="photo-gallery">
+            <!-- Ganti src dengan link foto kalian atau nama file foto di GitHub -->
+            <img src="https://via.placeholder.com/150" alt="Foto 1">
+            <img src="https://via.placeholder.com/150" alt="Foto 2">
+            <img src="https://via.placeholder.com/150" alt="Foto 3">
+        </div>
+
+        <p id="teks-romantis">"So long and goodnight... eh, maksudnya selamat ulang tahun! <br> Semoga bahagia terus ya, Nailong-ku!"</p>
+    </div>
+
+    <!-- Audio MCR Helena (Ganti link jika punya file mp3 sendiri) -->
     <audio id="lagu" loop>
-        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+        <source src="https://www.myinstants.com/media/sounds/my-chemical-romance-helena-official-music-video.mp3" type="audio/mpeg">
     </audio>
 
     <script>
-        function mulaiKejutan() {
-            // Putar Lagu
-            document.getElementById('lagu').play();
-            
-            // Ganti Teks
-            document.getElementById('headline').innerText = "Happy Birthday!";
-            document.getElementById('pesan').innerText = "Selamat ulang tahun ya! Semoga harimu selalu penuh tawa dan bahagia. Terima kasih sudah selalu ada. I love you! ❤️";
-            
-            // Sembunyikan Tombol
-            document.querySelector('.btn-buka').style.display = 'none';
-
-            // Munculkan Hati Berjatuhan
-            setInterval(createHeart, 300);
+        function checkPass() {
+            const pass = document.getElementById('inputPass').value;
+            // GANTI '15052003' dengan tanggal lahir dia yang asli
+            if (pass === '15052003') {
+                document.getElementById('pass-screen').style.display = 'none';
+                document.getElementById('main-content').style.display = 'flex';
+                document.getElementById('lagu').play();
+                createRain();
+            } else {
+                alert('Ups! Tanggal lahirnya salah, coba lagi ya sayang.');
+            }
         }
 
-        function createHeart() {
-            const heart = document.createElement('div');
-            heart.classList.add('heart');
-            heart.innerHTML = '❤️';
-            heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.animationDuration = Math.random() * 3 + 2 + 's';
-            heart.style.opacity = Math.random();
-            document.body.appendChild(heart);
+        // Efek hujan hati/bintang
+        function createRain() {
+            setInterval(() => {
+                const heart = document.createElement('div');
+                heart.innerHTML = '✨';
+                heart.style.position = 'fixed';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.top = '-20px';
+                heart.style.fontSize = Math.random() * 20 + 10 + 'px';
+                heart.style.transition = '5s linear';
+                document.body.appendChild(heart);
 
-            setTimeout(() => { heart.remove(); }, 5000);
+                setTimeout(() => {
+                    heart.style.transform = `translateY(${window.innerHeight + 50}px)`;
+                }, 100);
+
+                setTimeout(() => { heart.remove(); }, 5100);
+            }, 200);
         }
     </script>
 </body>
