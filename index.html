@@ -215,12 +215,15 @@ h1{
 
 .spotify-box h3{
     margin-bottom:5px;
+    font-size:1.2rem;
 }
 
 .spotify-box p{
     color:#ccc;
     font-size:0.9rem;
 }
+
+/* MUSIC BAR */
 
 .bar{
     margin-top:15px;
@@ -232,18 +235,27 @@ h1{
 }
 
 .bar-fill{
-    width:65%;
+    width:0%;
     height:100%;
     background:#ff0055;
-    animation:music 3s infinite alternate;
+    border-radius:10px;
+    animation:musicProgress 35s linear infinite;
 }
 
-@keyframes music{
+.music-time{
+    display:flex;
+    justify-content:space-between;
+    margin-top:8px;
+    font-size:0.8rem;
+    color:#bbb;
+}
+
+@keyframes musicProgress{
     from{
-        width:20%;
+        width:0%;
     }
     to{
-        width:85%;
+        width:100%;
     }
 }
 
@@ -341,19 +353,19 @@ h1{
     /* GIF ATAS */
 
     .left{
-        width:65px;
-        top:1%;
+        width:110px;
+        top:2%;
         left:2%;
-        opacity:0.45;
+        opacity:0.65;
     }
 
     /* GIF BAWAH */
 
     .right{
-        width:70px;
-        bottom:1%;
+        width:115px;
+        bottom:2%;
         right:2%;
-        opacity:0.4;
+        opacity:0.6;
     }
 
     .spotify-box{
@@ -372,8 +384,6 @@ h1{
 
 <body>
 
-<!-- PASSWORD -->
-
 <div id="pass-screen">
 
     <h2>Enter Your Birthday ❤️</h2>
@@ -389,8 +399,6 @@ h1{
     </button>
 
 </div>
-
-<!-- MAIN -->
 
 <div id="main-content">
 
@@ -458,6 +466,11 @@ h1{
 
         <div class="bar">
             <div class="bar-fill"></div>
+        </div>
+
+        <div class="music-time">
+            <span>0:00</span>
+            <span>0:35</span>
         </div>
 
     </div>
