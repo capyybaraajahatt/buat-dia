@@ -112,19 +112,32 @@ button:hover{
 .floating{
     position:absolute;
     width:130px;
-    opacity:0.95;
+    opacity:0.9;
     animation:float 5s ease-in-out infinite;
+    z-index:0;
+    pointer-events:none;
 }
 
 .left{
-    top:8%;
-    left:5%;
+    top:3%;
+    left:3%;
 }
 
 .right{
-    bottom:8%;
-    right:5%;
+    bottom:3%;
+    right:3%;
     animation-delay:2s;
+}
+
+/* CONTENT ABOVE GIF */
+
+h1,
+.photo-gallery,
+#teks-romantis,
+.spotify-box,
+.letter{
+    position:relative;
+    z-index:2;
 }
 
 /* TITLE */
@@ -298,28 +311,60 @@ h1{
 
 @media(max-width:768px){
 
+    #main-content{
+        padding-top:140px;
+        padding-bottom:120px;
+    }
+
     h1{
-        font-size:2.2rem;
+        font-size:2.1rem;
         line-height:1.3;
+        margin-top:20px;
+    }
+
+    .photo-gallery{
+        gap:10px;
     }
 
     .photo-gallery img{
-        width:100px;
-        height:100px;
+        width:95px;
+        height:95px;
     }
 
     #teks-romantis{
-        font-size:0.92rem;
+        width:92%;
+        font-size:0.9rem;
+        line-height:1.8;
+        padding:20px;
     }
 
-    .floating{
-        width:85px;
+    /* GIF ATAS */
+
+    .left{
+        width:65px;
+        top:1%;
+        left:2%;
+        opacity:0.45;
+    }
+
+    /* GIF BAWAH */
+
+    .right{
+        width:70px;
+        bottom:1%;
+        right:2%;
+        opacity:0.4;
     }
 
     .spotify-box{
-        width:90%;
+        width:92%;
     }
 
+    .letter{
+        width:92%;
+        font-size:0.92rem;
+        line-height:1.7;
+    }
 }
 
 </style>
@@ -365,12 +410,8 @@ h1{
 
     <div class="photo-gallery">
 
-        <!-- GANTI FOTO -->
-
         <img src="foto1.jpg">
-
         <img src="foto2.jpg">
-
         <img src="foto3.jpg">
 
     </div>
@@ -445,10 +486,7 @@ h1{
 <!-- AUDIO -->
 
 <audio id="lagu" loop>
-
-    <source src="helena.mp3"
-            type="audio/mpeg">
-
+    <source src="helena.mp3" type="audio/mpeg">
 </audio>
 
 <script>
@@ -502,6 +540,8 @@ function createRain(){
         Math.random();
 
         item.style.transition='5s linear';
+
+        item.style.zIndex='9999';
 
         document.body.appendChild(item);
 
