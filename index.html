@@ -17,8 +17,9 @@
 
 html,body{
     width:100%;
-    height:100%;
-    overflow:hidden;
+    min-height:100%;
+    overflow-x:hidden;
+    overflow-y:auto;
     font-family:'Poppins',sans-serif;
     background:black;
     color:white;
@@ -43,6 +44,7 @@ html,body{
     font-size:2rem;
     margin-bottom:10px;
     text-shadow:0 0 15px #ff0055;
+    text-align:center;
 }
 
 #pass-screen p{
@@ -85,19 +87,22 @@ button:hover{
 #main-content{
     display:none;
     width:100%;
-    height:100%;
+    min-height:100vh;
     position:relative;
     flex-direction:column;
     justify-content:center;
     align-items:center;
     text-align:center;
 
+    padding:120px 20px 80px;
+
     background:
     linear-gradient(rgba(0,0,0,0.65),rgba(0,0,0,0.8)),
-    url('https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJndXp4bmZqbmZqbmZqbmZqbmZqbmZqbmZqbmZqbmZqbmZq/l41lTjJp6zH6H6Y6S/giphy.gif');
+    url('bg.gif');
 
     background-size:cover;
     background-position:center;
+    background-attachment:fixed;
 
     animation:fadeIn 1.5s ease;
 }
@@ -127,6 +132,7 @@ button:hover{
 h1{
     font-size:4rem;
     margin-bottom:20px;
+    padding-top:20px;
 
     text-shadow:
     0 0 10px #ff0055,
@@ -159,7 +165,7 @@ h1{
     transform:scale(1.08) rotate(2deg);
 }
 
-/* TEXT */
+/* ROMANTIC CARD */
 
 #teks-romantis{
     width:85%;
@@ -179,6 +185,71 @@ h1{
     color:#f1f1f1;
 
     animation:fadeUp 2s ease;
+}
+
+/* SPOTIFY STYLE */
+
+.spotify-box{
+    margin-top:30px;
+    width:320px;
+    background:rgba(0,0,0,0.5);
+    border:1px solid rgba(255,255,255,0.1);
+    border-radius:20px;
+    padding:20px;
+    backdrop-filter:blur(6px);
+    box-shadow:0 0 20px rgba(0,0,0,0.4);
+}
+
+.spotify-box h3{
+    margin-bottom:5px;
+}
+
+.spotify-box p{
+    color:#ccc;
+    font-size:0.9rem;
+}
+
+.bar{
+    margin-top:15px;
+    width:100%;
+    height:5px;
+    background:#444;
+    border-radius:10px;
+    overflow:hidden;
+}
+
+.bar-fill{
+    width:65%;
+    height:100%;
+    background:#ff0055;
+    animation:music 3s infinite alternate;
+}
+
+@keyframes music{
+    from{
+        width:20%;
+    }
+    to{
+        width:85%;
+    }
+}
+
+/* LETTER */
+
+.letter{
+    margin-top:35px;
+    max-width:700px;
+    background:rgba(255,255,255,0.04);
+    border-radius:20px;
+    padding:25px;
+    border:1px solid rgba(255,255,255,0.08);
+    backdrop-filter:blur(5px);
+    animation:fadeUp 2.5s ease;
+}
+
+.letter h2{
+    margin-bottom:15px;
+    color:#ff7aa2;
 }
 
 /* ANIMATION */
@@ -228,7 +299,8 @@ h1{
 @media(max-width:768px){
 
     h1{
-        font-size:2.5rem;
+        font-size:2.2rem;
+        line-height:1.3;
     }
 
     .photo-gallery img{
@@ -243,6 +315,11 @@ h1{
     .floating{
         width:85px;
     }
+
+    .spotify-box{
+        width:90%;
+    }
+
 }
 
 </style>
@@ -250,7 +327,7 @@ h1{
 
 <body>
 
-<!-- PASSWORD SCREEN -->
+<!-- PASSWORD -->
 
 <div id="pass-screen">
 
@@ -268,11 +345,11 @@ h1{
 
 </div>
 
-<!-- MAIN CONTENT -->
+<!-- MAIN -->
 
 <div id="main-content">
 
-    <!-- GIF TETAP -->
+    <!-- GIF -->
 
     <img src="masha.gif"
          class="floating left">
@@ -280,24 +357,30 @@ h1{
     <img src="masha1.gif"
          class="floating right">
 
+    <!-- TITLE -->
+
     <h1>Happy Birthday ❤️</h1>
+
+    <!-- PHOTOS -->
 
     <div class="photo-gallery">
 
         <!-- GANTI FOTO -->
 
-        <img src="https://via.placeholder.com/150">
+        <img src="foto1.jpg">
 
-        <img src="https://via.placeholder.com/150">
+        <img src="foto2.jpg">
 
-        <img src="https://via.placeholder.com/150">
+        <img src="foto3.jpg">
 
     </div>
+
+    <!-- TEXT -->
 
     <p id="teks-romantis">
 
         “So long and goodnight...
-        eh, maksudnya selamat ulang tahun 😭❤️
+        eh, maksudnya selamat ulang tahun yaa ❤️
 
         <br><br>
 
@@ -320,9 +403,42 @@ h1{
         <br><br>
 
         So long and goodnight...
-        tapi bukan goodbye kok ❤️”
+        tapi bukan goodbye kok ahaha ❤️”
 
     </p>
+
+    <!-- SPOTIFY STYLE -->
+
+    <div class="spotify-box">
+
+        <h3>🎵 Helena</h3>
+
+        <p>My Chemical Romance</p>
+
+        <div class="bar">
+            <div class="bar-fill"></div>
+        </div>
+
+    </div>
+
+    <!-- LETTER -->
+
+    <div class="letter">
+
+        <h2>A Little Letter For You 💌</h2>
+
+        <p>
+            Kalau suatu hari nanti kamu capek,
+            bingung,
+            atau ngerasa dunia terlalu berat...
+
+            semoga kamu selalu inget kalau masih ada banyak hal baik yang nungguin kamu di depan sana.
+
+            Dan semoga,
+            ada orang baik yang nemenin kamu sampai sejauh itu ❤️
+        </p>
+
+    </div>
 
 </div>
 
@@ -361,7 +477,7 @@ function checkPass(){
     }
 }
 
-/* EFFECT */
+/* HEART RAIN */
 
 function createRain(){
 
