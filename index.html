@@ -1,136 +1,411 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Special for You</title>
-    <style>
-        body, html {
-            margin: 0; padding: 0;
-            height: 100%; font-family: 'Arial', sans-serif;
-            background-color: #111; color: white;
-            overflow: hidden;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Special For You ❤️</title>
 
-        /* Layar Password */
-        #pass-screen {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: #000; display: flex; flex-direction: column;
-            justify-content: center; align-items: center; z-index: 999;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-        input {
-            padding: 12px; border-radius: 8px; border: none;
-            margin-top: 15px; text-align: center; font-size: 16px;
-        }
+<style>
 
-        button {
-            margin-top: 15px; padding: 10px 25px; border-radius: 20px;
-            border: none; background: #e21d24; color: white;
-            font-weight: bold; cursor: pointer;
-        }
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-        /* Konten Utama */
-        #main-content {
-            display: none; height: 100%; width: 100%;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-                        url('https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJndXp4bmZqbmZqbmZqbmZqbmZqbmZqbmZqbmZqbmZqbmZq/l41lTjJp6zH6H6Y6S/giphy.gif'); /* Animasi Background */
-            background-size: cover; background-position: center;
-            flex-direction: column; justify-content: center; align-items: center;
-            text-align: center;
-        }
+html,body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    font-family:'Poppins',sans-serif;
+    background:black;
+    color:white;
+}
 
-        .floating-nailong {
-            position: absolute; width: 150px; z-index: -1;
-            animation: float 6s infinite ease-in-out;
-        }
+/* PASSWORD SCREEN */
 
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            50% { transform: translate(50px, -100px) rotate(15deg); }
-        }
+#pass-screen{
+    position:fixed;
+    inset:0;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    background:
+    radial-gradient(circle at top,#2b0b12,#000);
+    z-index:999;
+    animation:fadeIn 1s ease;
+}
 
-        .photo-gallery img {
-            width: 120px; height: 120px; object-fit: cover;
-            border: 3px solid white; border-radius: 15px;
-            margin: 10px; animation: bounce 2s infinite;
-        }
+#pass-screen h2{
+    font-size:2rem;
+    margin-bottom:10px;
+    text-shadow:0 0 15px #ff0055;
+}
 
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
+#pass-screen p{
+    color:#bbb;
+    margin-bottom:20px;
+}
 
-        h1 { font-size: 2.5rem; text-shadow: 2px 2px #e21d24; }
-        p { padding: 0 20px; font-style: italic; }
-    </style>
+input{
+    width:270px;
+    padding:14px;
+    border:none;
+    outline:none;
+    border-radius:50px;
+    background:#171717;
+    color:white;
+    text-align:center;
+    font-size:16px;
+    box-shadow:0 0 20px rgba(255,0,80,0.3);
+}
+
+button{
+    margin-top:18px;
+    padding:12px 28px;
+    border:none;
+    border-radius:50px;
+    background:linear-gradient(45deg,#ff0055,#ff4d6d);
+    color:white;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.3s;
+    box-shadow:0 0 20px rgba(255,0,100,0.5);
+}
+
+button:hover{
+    transform:scale(1.05);
+}
+
+/* MAIN CONTENT */
+
+#main-content{
+    display:none;
+    width:100%;
+    height:100%;
+    position:relative;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+
+    background:
+    linear-gradient(rgba(0,0,0,0.65),rgba(0,0,0,0.8)),
+    url('https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJndXp4bmZqbmZqbmZqbmZqbmZqbmZqbmZqbmZqbmZqbmZq/l41lTjJp6zH6H6Y6S/giphy.gif');
+
+    background-size:cover;
+    background-position:center;
+
+    animation:fadeIn 1.5s ease;
+}
+
+/* FLOATING GIF */
+
+.floating{
+    position:absolute;
+    width:130px;
+    opacity:0.95;
+    animation:float 5s ease-in-out infinite;
+}
+
+.left{
+    top:8%;
+    left:5%;
+}
+
+.right{
+    bottom:8%;
+    right:5%;
+    animation-delay:2s;
+}
+
+/* TITLE */
+
+h1{
+    font-size:4rem;
+    margin-bottom:20px;
+
+    text-shadow:
+    0 0 10px #ff0055,
+    0 0 25px #ff0055;
+
+    animation:glow 2s infinite alternate;
+}
+
+/* PHOTO */
+
+.photo-gallery{
+    display:flex;
+    gap:15px;
+    margin:20px 0;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+.photo-gallery img{
+    width:130px;
+    height:130px;
+    object-fit:cover;
+    border-radius:20px;
+    border:3px solid rgba(255,255,255,0.7);
+    transition:0.4s;
+    box-shadow:0 0 20px rgba(255,255,255,0.15);
+}
+
+.photo-gallery img:hover{
+    transform:scale(1.08) rotate(2deg);
+}
+
+/* TEXT */
+
+#teks-romantis{
+    width:85%;
+    max-width:750px;
+
+    padding:25px;
+
+    line-height:1.9;
+    font-size:1.05rem;
+
+    background:rgba(255,255,255,0.05);
+    backdrop-filter:blur(6px);
+
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:25px;
+
+    color:#f1f1f1;
+
+    animation:fadeUp 2s ease;
+}
+
+/* ANIMATION */
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+    }
+    to{
+        opacity:1;
+    }
+}
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes glow{
+    from{
+        text-shadow:0 0 10px #ff0055;
+    }
+    to{
+        text-shadow:
+        0 0 25px #ff0055,
+        0 0 40px #ff0055;
+    }
+}
+
+@keyframes float{
+    0%,100%{
+        transform:translateY(0px);
+    }
+    50%{
+        transform:translateY(-20px);
+    }
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+    h1{
+        font-size:2.5rem;
+    }
+
+    .photo-gallery img{
+        width:100px;
+        height:100px;
+    }
+
+    #teks-romantis{
+        font-size:0.92rem;
+    }
+
+    .floating{
+        width:85px;
+    }
+}
+
+</style>
 </head>
+
 <body>
 
-    <!-- Layar Password -->
-    <div id="pass-screen">
-        <h2>Masukkan Tanggal Lahir (DDMMYYYY)</h2>
-        <p style="font-size: 0.8rem; color: #666;">Contoh: 29112004</p>
-        <input type="password" id="inputPass" placeholder="Klik di sini...">
-        <button onclick="checkPass()">Buka Kejutan</button>
+<!-- PASSWORD SCREEN -->
+
+<div id="pass-screen">
+
+    <h2>Enter Your Birthday ❤️</h2>
+
+    <p>Format : DDMMYYYY</p>
+
+    <input type="password"
+           id="inputPass"
+           placeholder="Klik di sini...">
+
+    <button onclick="checkPass()">
+        Open Surprise
+    </button>
+
+</div>
+
+<!-- MAIN CONTENT -->
+
+<div id="main-content">
+
+    <!-- GIF TETAP -->
+
+    <img src="masha.gif"
+         class="floating left">
+
+    <img src="masha1.gif"
+         class="floating right">
+
+    <h1>Happy Birthday ❤️</h1>
+
+    <div class="photo-gallery">
+
+        <!-- GANTI FOTO -->
+
+        <img src="https://via.placeholder.com/150">
+
+        <img src="https://via.placeholder.com/150">
+
+        <img src="https://via.placeholder.com/150">
+
     </div>
 
-    <!-- Konten Utama -->
-    <div id="main-content">
-        <!-- Tambahkan Gambar Nailong Lucu dari Internet -->
-        <img src="masha.gif" class="floating-nailong" style="top: 10%; left: 10%;">
-        <img src="masha1.gif" style="bottom: 10%; right: 10%;">
+    <p id="teks-romantis">
 
-        <h1>Happy Birthday! ❤️</h1>
-        
-        <div class="photo-gallery">
-            <!-- Ganti src dengan link foto kalian atau nama file foto di GitHub -->
-            <img src="https://via.placeholder.com/150" alt="Foto 1">
-            <img src="https://via.placeholder.com/150" alt="Foto 2">
-            <img src="https://via.placeholder.com/150" alt="Foto 3">
-        </div>
+        “So long and goodnight...
+        eh, maksudnya selamat ulang tahun 😭❤️
 
-        <p id="teks-romantis">"So long and goodnight... eh, maksudnya selamat ulang tahun! <br> Semoga bahagia terus yaa, berkah diumur yang baruu"</p>
-    </div>
+        <br><br>
 
-    <!-- Audio MCR Helena (Ganti link jika punya file mp3 sendiri) -->
-    <audio id="lagu" loop>
-        <source src="helena.mp3" type="audio/mpeg">
-    </audio>
+        Semoga di umur yang baru ini kamu selalu dikelilingi hal-hal baik,
+        lebih bahagia dari tahun sebelumnya,
+        dan semua yang kamu semogakan bisa pelan-pelan terwujud.
 
-    <script>
-        function checkPass() {
-            const pass = document.getElementById('inputPass').value;
-            // GANTI '15052003' dengan tanggal lahir dia yang asli
-            if (pass === '28052007') {
-                document.getElementById('pass-screen').style.display = 'none';
-                document.getElementById('main-content').style.display = 'flex';
-                document.getElementById('lagu').play();
-                createRain();
-            } else {
-                alert('Ups! Tanggal lahirnya salah, coba lagi yaaa.');
-            }
-        }
+        <br><br>
 
-        // Efek hujan hati/bintang
-        function createRain() {
-            setInterval(() => {
-                const heart = document.createElement('div');
-                heart.innerHTML = '✨';
-                heart.style.position = 'fixed';
-                heart.style.left = Math.random() * 100 + 'vw';
-                heart.style.top = '-20px';
-                heart.style.fontSize = Math.random() * 20 + 10 + 'px';
-                heart.style.transition = '5s linear';
-                document.body.appendChild(heart);
+        Makasih ya udah hadir sejauh ini.
+        Entah kamu sadar atau nggak,
+        kamu berhasil jadi salah satu alasan hari-hariku terasa lebih hangat.
 
-                setTimeout(() => {
-                    heart.style.transform = `translateY(${window.innerHeight + 50}px)`;
-                }, 100);
+        <br><br>
 
-                setTimeout(() => { heart.remove(); }, 5100);
-            }, 200);
-        }
-    </script>
+        Jangan terlalu keras sama diri sendiri yaa.
+        Kamu udah hebat sampai sejauh ini,
+        dan aku harap senyum kamu bakal selalu ada di banyak hari ke depan.
+
+        <br><br>
+
+        So long and goodnight...
+        tapi bukan goodbye kok ❤️”
+
+    </p>
+
+</div>
+
+<!-- AUDIO -->
+
+<audio id="lagu" loop>
+
+    <source src="helena.mp3"
+            type="audio/mpeg">
+
+</audio>
+
+<script>
+
+function checkPass(){
+
+    const pass =
+    document.getElementById('inputPass').value;
+
+    if(pass === '28052007'){
+
+        document.getElementById('pass-screen')
+        .style.display='none';
+
+        document.getElementById('main-content')
+        .style.display='flex';
+
+        document.getElementById('lagu').play();
+
+        createRain();
+
+    }else{
+
+        alert('Upss... tanggal lahirnya salah 😭');
+
+    }
+}
+
+/* EFFECT */
+
+function createRain(){
+
+    setInterval(()=>{
+
+        const item =
+        document.createElement('div');
+
+        item.innerHTML='❤️';
+
+        item.style.position='fixed';
+
+        item.style.left=
+        Math.random()*100+'vw';
+
+        item.style.top='-20px';
+
+        item.style.fontSize=
+        (Math.random()*20+15)+'px';
+
+        item.style.opacity=
+        Math.random();
+
+        item.style.transition='5s linear';
+
+        document.body.appendChild(item);
+
+        setTimeout(()=>{
+
+            item.style.transform=
+            `translateY(${window.innerHeight+50}px)`;
+
+        },100);
+
+        setTimeout(()=>{
+
+            item.remove();
+
+        },5000);
+
+    },250);
+}
+
+</script>
+
 </body>
 </html>
