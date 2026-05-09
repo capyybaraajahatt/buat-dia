@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Sayang!</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #ffeef2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .container {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            max-width: 400px;
+            z-index: 10;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 2s forwards ease-in-out;
+        }
+
+        h1 { color: #d63384; margin-bottom: 10px; }
+        p { color: #555; line-height: 1.6; }
+
+        .btn-buka {
+            background-color: #d63384;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: 0.3s;
+        }
+
+        .btn-buka:hover { transform: scale(1.1); background-color: #b02a6b; }
+
+        /* Animasi Hati Berjatuhan */
+        .heart {
+            position: absolute;
+            color: #ff4d6d;
+            font-size: 20px;
+            top: -10%;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            to { transform: translateY(110vh); }
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container" id="card">
+        <h1 id="headline">Klik Tombol di Bawah ❤️</h1>
+        <p id="pesan">Ada pesan kecil buat kamu yang hari ini lagi ulang tahun...</p>
+        <button class="btn-buka" onclick="mulaiKejutan()">Buka Pesan</button>
+    </div>
+
+    <!-- Audio (Opsional: ganti link mp3 dengan lagu romantis favorit kalian) -->
+    <audio id="lagu" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        function mulaiKejutan() {
+            // Putar Lagu
+            document.getElementById('lagu').play();
+            
+            // Ganti Teks
+            document.getElementById('headline').innerText = "Happy Birthday!";
+            document.getElementById('pesan').innerText = "Selamat ulang tahun ya! Semoga harimu selalu penuh tawa dan bahagia. Terima kasih sudah selalu ada. I love you! ❤️";
+            
+            // Sembunyikan Tombol
+            document.querySelector('.btn-buka').style.display = 'none';
+
+            // Munculkan Hati Berjatuhan
+            setInterval(createHeart, 300);
+        }
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+            heart.style.opacity = Math.random();
+            document.body.appendChild(heart);
+
+            setTimeout(() => { heart.remove(); }, 5000);
+        }
+    </script>
+</body>
+</html>
